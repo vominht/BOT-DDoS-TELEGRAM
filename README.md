@@ -7,6 +7,7 @@ Change :
 - method l4 in line 378, 402, 410
 - admin id in line 658
 - change file users.txt to use bot
+- Tele: @atusssssssss
 
 # DEMO FEATURES
 ![CB543B81-CED0-495A-9C96-246E861DDCFF](https://github.com/vominht/BOT-DDoS-TELEGRAM/assets/103721562/40f8438e-8433-4757-9e7b-34e81624d732)
