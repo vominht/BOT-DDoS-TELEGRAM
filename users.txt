@@ -1,0 +1,2 @@
+userid:time-expire:attack-time:concurrents
+example: 123456:2029-12-31:400:2
