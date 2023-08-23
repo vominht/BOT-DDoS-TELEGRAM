@@ -165,43 +165,43 @@ def perform_attack(target, port, duration, method, user_id):
     response_json = response.json()
         
     bot.sendMessage(user_id, f'<strong>Attack Sent!!</strong>\n\n<strong>Target:</strong> {target}\n<strong>Port:</strong> {port}\n<strong>Duration:</strong> {duration}\n<strong>Method:</strong> {method}', parse_mode='HTML')
-        threading.Timer(float(duration), decrease_attack_slots_for_user, args=[user_id]).start()
+    threading.Timer(float(duration), decrease_attack_slots_for_user, args=[user_id]).start()
 
        
-        vietnam_time = convert_to_vietnam_time(datetime.datetime.now())
-        username = get_username(user_id) or f'Unknown user {user_id}'
-        attack_info = {
-            'target': target,
-            'port': port,
-            'duration': duration,
-            'method': method,
-            'user_id': user_id,
-            'time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        }
-        successful_attacks.append(attack_info)
+    vietnam_time = convert_to_vietnam_time(datetime.datetime.now())
+    username = get_username(user_id) or f'Unknown user {user_id}'
+    attack_info = {
+        'target': target,
+        'port': port,
+        'duration': duration,
+        'method': method,
+        'user_id': user_id,
+        'time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    }
+    successful_attacks.append(attack_info)
         
        
-        message = f"**Buffalo Attack Logs:**\n\n**Username:** {username}\n**Target:** {target}\n**Port:** {port}\n**Duration:** {duration}\n**Method:** {method}\n**Date:** {vietnam_time.strftime('%Y-%m-%d %H:%M:%S')}"
-        embeds = [
-          {
+    message = f"**Buffalo Attack Logs:**\n\n**Username:** {username}\n**Target:** {target}\n**Port:** {port}\n**Duration:** {duration}\n**Method:** {method}\n**Date:** {vietnam_time.strftime('%Y-%m-%d %H:%M:%S')}"
+    embeds = [
+        {
             'title': message,
             'color': 16711680 
-          }
-        ]
+        }
+    ]
         
-        payload = {
-          'username': 'Buffalo Webhook',
-          'embeds': embeds
-        }
+    payload = {
+        'username': 'Buffalo Webhook',
+        'embeds': embeds
+    }
 
-        headers = {
-            'Content-Type': 'application/json'
-        }
+    headers = {
+        'Content-Type': 'application/json'
+    }
 
-        response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
+    response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 
-        if response.status_code != 204:
-            print('Failed to send message to Discord webhook')
+    if response.status_code != 204:
+        print('Failed to send message to Discord webhook')
 class UserState:
     def __init__(self, method=None, target=None, port=None, time=None):
         self.method = method
