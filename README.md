@@ -1,3 +1,6 @@
+# UPDATE
+Update 26/08/2023
+- Add check tool to check information of website, ip
 # Usage
 Change :
 - discord webhook in line 15
