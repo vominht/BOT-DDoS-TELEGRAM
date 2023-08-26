@@ -327,7 +327,7 @@ def perform_attack(target, port, duration, method, user_id):
         'duration': duration,
         'method': method,
         'user_id': user_id,
-            'time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        'time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
     successful_attacks.append(attack_info)
         
