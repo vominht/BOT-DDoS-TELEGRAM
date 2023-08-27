@@ -316,7 +316,7 @@ def perform_attack(target, port, duration, method, user_id):
     link_text = f'<a href="{check_link}">Check Result</a>'
    
     bot.sendMessage(user_id, f'<strong>Attack Sent!!</strong>\n\n<strong>Target:</strong> {target}\n<strong>Port:</strong> {port}\n<strong>Duration:</strong> {duration}\n<strong>Method:</strong> {method}\n{link_text}', parse_mode='HTML')
-        threading.Timer(float(duration), decrease_attack_slots_for_user, args=[user_id]).start()
+    threading.Timer(float(duration), decrease_attack_slots_for_user, args=[user_id]).start()
 
        
     vietnam_time = convert_to_vietnam_time(datetime.datetime.now())
