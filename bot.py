@@ -871,10 +871,26 @@ def handle_running_command(chat_id):
                 concurrents = info.get('concurrents', 0)
                 remaining_concurrents = concurrents - user_attack_slots
                 message += f'<strong>Username:</strong> @{username}\n<strong>User ID:</strong> {user_id}\n<strong>Remaining Concurrents:</strong> {remaining_concurrents}/{concurrents}\n<strong>Target:</strong> {target}\n<strong>Port:</strong> {port}\n<strong>Time Remaining:</strong> {remaining_time_str}\n<strong>Method:</strong> {method}\n\n'
+                chat_message = bot.sendMessage(chat_id, message, parse_mode='HTML')
+                update_remaining_time(chat_id, chat_message, remaining_time, message)
             else:
                 successful_attacks.remove(attack)
+    if len(successful_attacks) == 0:
+        bot.sendMessage(chat_id, message, parse_mode='HTML')
+    
 
-    bot.sendMessage(chat_id, message, parse_mode='HTML')
+def update_remaining_time(chat_id, chat_message, initial_remaining_time, original_message):
+    remaining_time = initial_remaining_time
+    while remaining_time > 0:
+        remaining_time_str = f'{int(remaining_time)} seconds' if remaining_time > 0 else 'Finished'
+        updated_message = original_message.replace(f'<strong>Time Remaining:</strong> {int(initial_remaining_time)} seconds', f'<strong>Time Remaining:</strong> {remaining_time_str}')
+        
+        if updated_message != original_message:
+          
+          bot.editMessageText((chat_id, chat_message['message_id']), updated_message, parse_mode='HTML')
+        
+        time.sleep(1)
+        remaining_time -= 1
 
 
 
